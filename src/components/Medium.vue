@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="post in posts" :key="post.title">
-            <v-card class="my-3" hover>
+            <v-card class="mb-3" hover>
                 <v-card-media
                         class="white--text"
                         height="170px"
@@ -41,7 +41,6 @@
             axios.get(`https://otlq6v2w52.execute-api.us-east-1.amazonaws.com/Ready/medium`)
                 .then(response => {
                     this.posts = response.data.payload.references.Post
-                    console.log(`https://cdn-images-1.medium.com/max/1600/${this.post.virtuals.previewImage.imageId}`)
                 })
                 .catch(e => {
                     this.errors.push(e)
@@ -54,7 +53,8 @@
         },
         data () {
             return {
-                posts: {}
+                posts: {},
+                errors: {}
             }
         }
     }
